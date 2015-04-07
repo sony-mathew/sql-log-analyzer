@@ -79,7 +79,7 @@ queryAnalysisApp.controller('LogAnalysis', ['sharedProps', function (sharedProps
 	self.selectTable = function () {
 		console.log(self.mysqlTable);
 		self.tableQueryType = null;
-		
+
 		//find out all query types regarding that table
 		var tableSpecificQueries = [];
 		var type = null;

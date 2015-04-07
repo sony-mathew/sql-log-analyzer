@@ -4,9 +4,13 @@
 	<title> Rails Query Analyser </title>
 	<script src="./js/simpleSqlParser.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
-	<!-- <script src="./js/angular.js"></script> -->
 	<script src="./js/controllers.js"></script>
+	<!-- <script src="./js/angular.js"></script> -->
+	<!--	<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/highlight.min.js"></script> -->
+	<!--	<script src="http://code.jquery.com/jquery-1.11.2.min.js"></script> -->
+
 	<link rel="stylesheet" href="./styles/style.css">
+	<!--	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/styles/default.min.css"> -->
 </head>
 
 <body ng-app="queryAnalysisApp">
@@ -42,12 +46,35 @@
 
 			<div class="listing">
 				<p ng-repeat="query in loga.listQ() track by $index"> 
-					{{ $index + 1}} . {{ query }} 
+				{{ $index + 1}} . {{ query }}
+				<!--
+				<p ng-repeat-start="query in loga.listQ() track by $index"> 
+					<pre ng-repeat-end> {{ $index + 1}} . 
+						<code class="sql">{{ query }}</code>
+					</pre>
+				-->
 				</p>
 			</div>
 		</p>
 	</section>
 
 </body>
-<!-- <script src="query_analysis.js"></script> -->
+
+<script type="text/javascript">
+	// jQuery(document).ready(function() {
+	// 	window.listingChanged = false;
+	// 	setInterval(function(){ 
+	// 		if (window.listingChanged) {
+	// 			jQuery('pre code').each(function(i, block) {
+	// 		    hljs.highlightBlock(block);
+	// 		  });
+	// 		  window.listingChanged = false;
+	// 		}
+	// 	}, 5000);
+
+	// 	jQuery('.listing').on('DOMSubtreeModified', function(event, data) {
+ //   		window.listingChanged = true;
+	// 	});
+	// });
+</script>
 </html>
