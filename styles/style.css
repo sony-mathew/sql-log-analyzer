@@ -1,0 +1,30 @@
+
+header, section {
+	padding: 20px;
+	width: 100%;
+	font-family: sans-serif;
+	font-weight: 100;
+}
+
+header {
+  font-weight: 100;
+  font-size: 20px;
+}
+
+section textarea {
+	width: 800px;
+	height: 60px;
+	border-radius: 5px;
+	border: 1px solid lightgrey;
+	margin: 10px 0px; 
+}
+
+#log-analysis span {
+	margin-right: 40px;
+}
+
+#log-analysis .listing {
+	margin-top: 35px;
+	font-family: monospace;
+}
+
