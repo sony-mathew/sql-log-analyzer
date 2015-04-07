@@ -40,6 +40,11 @@ queryAnalysisApp.controller('LogInput', [function () {
 						} else {
 							tableQueryTypes[tempTable] = Object.keys(sqlObj);
 						}
+						//keeping only unique types
+						tableQueryTypes[tempTable] = tableQueryTypes[tempTable].filter(function(item, pos) {
+							return tableQueryTypes[tempTable].indexOf(item) == pos;
+						});
+
 						tableNames.push(tempTable);
 						break;
 					}
@@ -49,32 +54,16 @@ queryAnalysisApp.controller('LogInput', [function () {
 			// return line.match(/\S+\s+\S+\s+\(\S+s\)/i);
 			return Object.getOwnPropertyNames(sqlObj).length != 0;
 		});
-
+		
+		//storing the all unique table names in global object
 		queryAnalysisApp.tableNames = tableNames.filter(function(item, pos) {
-			return tablesAll.indexOf(item) == pos;
+			return tableNames.indexOf(item) == pos;
 		});
-
-		//
-		// a.FROM[0].table
-		// statements = ["FROM", "UPDATE", "DELETE FROM"]
-		// ["INSERT INTO"].table
-		//b["DELETE FROM"][0].table
-
-		//getting all the mysql table names
-		// var tablesAll = [];
-		// for (var i in queryAnalysisApp.queries) {
-
-		// 	var table_name = queryAnalysisApp.queries[i].match(/\S+\s+/i)[0];
-		// 	tablesAll.push(table_name.replace(" ", ""));
-		// }
-		// queryAnalysisApp.tables = tablesAll.filter(function(item, pos) {
-		// 	return tablesAll.indexOf(item) == pos;
-		// });
+		//storing the hash containing tables and associated query types in a global object
+		queryAnalysisApp.tableQueryTypesHash = tableQueryTypes;
 
 		//hiding the input class
 		self.hide = true;
-		queryAnalysisApp.inputHide = true;
-		
 	};
 }]);
 
@@ -84,29 +73,24 @@ queryAnalysisApp.controller('LogInput', [function () {
 queryAnalysisApp.controller('LogAnalysis', ['sharedProps', function (sharedProps) {
 	var self = this;
 	self.tables = function () {
-		return sharedProps.getObject('tables');
+		return sharedProps.getObject('tableNames');
 	};
 
 	self.selectTable = function () {
 		console.log(self.mysqlTable);
 		self.tableQueryType = null;
+		
 		//find out all query types regarding that table
-		var tableSpecificQueries = []; 
-		var tableSpecificQueryTypes = [];
+		var tableSpecificQueries = [];
 		var type = null;
 		for (var i in queryAnalysisApp.queries) {
-			var tsq = queryAnalysisApp.queries[i].match(new RegExp('\\s+' + self.mysqlTable + '\\s+', 'i') );
+			var tsq = queryAnalysisApp.queries[i].match(new RegExp('\\`' + self.mysqlTable + '\\`', 'i') );
 			if (tsq) {
 				tableSpecificQueries.push(queryAnalysisApp.queries[i]);
-				type = queryAnalysisApp.queries[i].match(/\)\s+\S+\s+`/i)[0].replace(")", "").replace("`", "");
-				type = type.replace(/\s+/g, "");
-				tableSpecificQueryTypes.push(type);
 			}
 		}
 		queryAnalysisApp.tableSpecificQueries = tableSpecificQueries;
-		queryAnalysisApp.tableSpecificQueryTypes = tableSpecificQueryTypes.filter(function(item, pos) {
-			return tableSpecificQueryTypes.indexOf(item) == pos;
-		});
+		queryAnalysisApp.tableSpecificQueryTypes = queryAnalysisApp.tableQueryTypesHash[self.mysqlTable];
 	};
 
 	self.queryTypes = function () {
