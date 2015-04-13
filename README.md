@@ -1,7 +1,7 @@
 # Parsing SQL Queries from Rails Server Log
 
 This is a very small app developed using angular.js library only with the intention to study angular.js.
-Since this is my first angular project and I'm not much of a front-end guy, the code will look really ugly to the real angular developers[not only angular developers, developers in general.
+Since this is my first angular project and I'm not much of a front-end guy, the code will look really ugly to the real angular developers[not only to angular developers, developers in general :)].
 
 This App does not require a backend and can run in any browser. This app is used to categorise the queries by tables and by type from the Rails Server Log in the console.
 
