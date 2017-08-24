@@ -1,7 +1,9 @@
 # Parsing SQL Queries from Rails Server Log
 
-This is a very small app developed using angular.js library only with the intention to study angular.js.
-Since this is my first angular project and I'm not much of a front-end guy, the code will look really ugly to the real angular developers[not only to angular developers, developers in general :)].
+## Motivation
+While in Freshdesk, during feature development, I was expected to optimize each and every query that was fired as part of feature and many a times, to have better response times, the existing queries also need to be optimized. In local development, it was very tiresome to look through the rails server logs to find out the join queries, unexpected table's queries and unwanted load queries. In order to get a holistic and organised view of the queries from the rails server log, I wrote this tiny standlaone app using angular.
+
+## Working
 
 This App does not require a backend and can run in any browser. This app is used to categorise the queries by tables and by type from the Rails Server Log in the console.
 
@@ -16,6 +18,7 @@ All you have to do is <br/>
 <img src="https://raw.githubusercontent.com/ynos1234/rails-server-log-sql-query-categorising/master/Screenshots/table_select.png" />
 7. Right after you select type, all the queries of that type ralted to that tbale you slected will be listed below. <br/>
 
+## Special Mention
 
 I have used a third party javascript library for parsing the SQL Queries. 
-This libary is called <a href="https://github.com/dsferruzza/simpleSqlParser"> simpleSqlParser </a> and it's an awesome library, without which it woould have been very difficult.
+This libary is called <a href="https://github.com/dsferruzza/simpleSqlParser"> simpleSqlParser </a> and it's an awesome library, without which it would have been very difficult.
