@@ -18,6 +18,7 @@ All you have to do is <br/>
 <img src="https://raw.githubusercontent.com/sony-mathew/sql-log-analyzer/master/images/table_select.png" />
 7. Right after you select type, all the queries of that type related to that table you selected will be listed below. <br/>
 
+## Live Demo
 Checkout the live demo of the app here: [https://sony-mathew.github.io/sql-log-analyzer/](https://sony-mathew.github.io/sql-log-analyzer/) 
 
 ## Special Mention
