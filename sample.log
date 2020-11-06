@@ -1,84 +1,84 @@
-[854202a2-abb4-4504-9640-ca9c99859f6f] [127.0.0.1] Started GET "/dashboard" for 127.0.0.1 at 2017-08-24 09:01:54 +0530
-[854202a2-abb4-4504-9640-ca9c99859f6f] [127.0.0.1]   User Load (0.4ms)  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 1  ORDER BY `users`.`id` ASC LIMIT 1
-[854202a2-abb4-4504-9640-ca9c99859f6f] [127.0.0.1] Processing by DomainsController#index as HTML
-[854202a2-abb4-4504-9640-ca9c99859f6f] [127.0.0.1]   AccountUser Load (0.4ms)  SELECT  `account_users`.* FROM `account_users` WHERE `account_users`.`user_id` = 1 AND `account_users`.`account_id` = 2 LIMIT 1
-[854202a2-abb4-4504-9640-ca9c99859f6f] [127.0.0.1]   Account Load (0.3ms)  SELECT  `accounts`.* FROM `accounts` WHERE `accounts`.`id` = 2 LIMIT 1
-[854202a2-abb4-4504-9640-ca9c99859f6f] [127.0.0.1]   Domain Load (0.4ms)  SELECT  `domains`.* FROM `domains` WHERE `domains`.`account_id` = 2 AND `domains`.`id` = 2 LIMIT 1
-[854202a2-abb4-4504-9640-ca9c99859f6f] [127.0.0.1]    (0.6ms)  SELECT COUNT(*) FROM `customers` WHERE `customers`.`domain_id` = 2 AND `customers`.`is_deleted` = 0
-[854202a2-abb4-4504-9640-ca9c99859f6f] [127.0.0.1] Dalli::Server#connect localhost:11211
-[854202a2-abb4-4504-9640-ca9c99859f6f] [127.0.0.1] localhost:11211 is back (downtime was 38.089 seconds)
-[854202a2-abb4-4504-9640-ca9c99859f6f] [127.0.0.1]    (0.5ms)  SELECT COUNT(*) FROM `stats_domain_subscribe` WHERE `stats_domain_subscribe`.`domain_id` = 2 AND (`stats_domain_subscribe`.`created_at` > '2017-08-24 00:00:00.000000')
-[854202a2-abb4-4504-9640-ca9c99859f6f] [127.0.0.1]    (0.4ms)  SELECT COUNT(*) FROM `stats_domain_subscribe` WHERE `stats_domain_subscribe`.`domain_id` = 2 AND (`stats_domain_subscribe`.`created_at` > '2017-08-23 00:00:00.000000' AND `stats_domain_subscribe`.`created_at` < '2017-08-24 00:00:00.000000')
-[854202a2-abb4-4504-9640-ca9c99859f6f] [127.0.0.1]    (0.4ms)  SELECT COUNT(*) AS count_all, DATE(`stats_domain_subscribe`.`created_at`) AS date_stats_domain_subscribe_created_at FROM `stats_domain_subscribe` WHERE `stats_domain_subscribe`.`domain_id` = 2 AND (`stats_domain_subscribe`.`created_at` > '2017-07-25 03:31:54.431481' ) GROUP BY DATE(`stats_domain_subscribe`.`created_at`)  ORDER BY `stats_domain_subscribe`.`created_at` ASC
-[854202a2-abb4-4504-9640-ca9c99859f6f] [127.0.0.1]    (0.4ms)  SELECT COUNT(*) FROM `stats_domain_unsubscribe` WHERE `stats_domain_unsubscribe`.`domain_id` = 2 AND (`stats_domain_unsubscribe`.`created_at` > '2017-08-24 00:00:00.000000')
-[854202a2-abb4-4504-9640-ca9c99859f6f] [127.0.0.1]    (0.5ms)  SELECT COUNT(*) FROM `stats_domain_unsubscribe` WHERE `stats_domain_unsubscribe`.`domain_id` = 2 AND (`stats_domain_unsubscribe`.`created_at` > '2017-08-23 00:00:00.000000' AND `stats_domain_unsubscribe`.`created_at` < '2017-08-24 00:00:00.000000')
-[854202a2-abb4-4504-9640-ca9c99859f6f] [127.0.0.1]    (0.5ms)  SELECT COUNT(*) AS count_all, DATE(`stats_domain_unsubscribe`.`created_at`) AS date_stats_domain_unsubscribe_created_at FROM `stats_domain_unsubscribe` WHERE `stats_domain_unsubscribe`.`domain_id` = 2 AND (`stats_domain_unsubscribe`.`created_at` > '2017-07-25 03:31:54.440731' ) GROUP BY DATE(`stats_domain_unsubscribe`.`created_at`)  ORDER BY `stats_domain_unsubscribe`.`created_at` ASC
-[854202a2-abb4-4504-9640-ca9c99859f6f] [127.0.0.1]    (0.6ms)  SELECT COUNT(*) FROM `customers` WHERE `customers`.`domain_id` = 2 AND `customers`.`is_deleted` = 0 AND `customers`.`push_subscribed` = 1
-[854202a2-abb4-4504-9640-ca9c99859f6f] [127.0.0.1]    (0.6ms)  SELECT COUNT(*) AS count_all, MONTH(`created_at`) AS month_created_at FROM `customers` WHERE `customers`.`domain_id` = 2 AND `customers`.`is_deleted` = 0 AND `customers`.`push_subscribed` = 1 AND (`customers`.`created_at` > '2016-09-24 03:31:54.446290') GROUP BY MONTH(`created_at`)
-[854202a2-abb4-4504-9640-ca9c99859f6f] [127.0.0.1]    (0.4ms)  SELECT COUNT(*) FROM `customers` WHERE `customers`.`domain_id` = 2 AND `customers`.`is_deleted` = 0 AND `customers`.`push_subscribed` = 1 AND (`customers`.`created_at` > '2017-08-01 00:00:00.000000')
-[854202a2-abb4-4504-9640-ca9c99859f6f] [127.0.0.1]   Campaign Load (0.6ms)  SELECT  `campaigns`.* FROM `campaigns` WHERE `campaigns`.`domain_id` = 2  ORDER BY `campaigns`.`id` DESC LIMIT 30
-[854202a2-abb4-4504-9640-ca9c99859f6f] [127.0.0.1]    (0.4ms)  SELECT COUNT(*) FROM `stats_push_campaign_clicks` WHERE `stats_push_campaign_clicks`.`campaign_id` = 21
-[854202a2-abb4-4504-9640-ca9c99859f6f] [127.0.0.1]    (0.4ms)  SELECT COUNT(*) FROM `stats_push_campaign_views` WHERE `stats_push_campaign_views`.`campaign_id` = 21
-[854202a2-abb4-4504-9640-ca9c99859f6f] [127.0.0.1]    (0.4ms)  SELECT COUNT(*) FROM `stats_push_campaign_clicks` WHERE `stats_push_campaign_clicks`.`campaign_id` = 22
-[854202a2-abb4-4504-9640-ca9c99859f6f] [127.0.0.1]    (0.4ms)  SELECT COUNT(*) FROM `stats_push_campaign_views` WHERE `stats_push_campaign_views`.`campaign_id` = 22
-[854202a2-abb4-4504-9640-ca9c99859f6f] [127.0.0.1]    (0.4ms)  SELECT COUNT(*) FROM `stats_push_campaign_clicks` WHERE `stats_push_campaign_clicks`.`campaign_id` = 23
-[854202a2-abb4-4504-9640-ca9c99859f6f] [127.0.0.1]    (0.4ms)  SELECT COUNT(*) FROM `stats_push_campaign_views` WHERE `stats_push_campaign_views`.`campaign_id` = 23
-[854202a2-abb4-4504-9640-ca9c99859f6f] [127.0.0.1]    (0.4ms)  SELECT COUNT(*) FROM `stats_push_campaign_clicks` WHERE `stats_push_campaign_clicks`.`campaign_id` = 24
-[854202a2-abb4-4504-9640-ca9c99859f6f] [127.0.0.1]    (0.5ms)  SELECT COUNT(*) FROM `stats_push_campaign_views` WHERE `stats_push_campaign_views`.`campaign_id` = 24
-[854202a2-abb4-4504-9640-ca9c99859f6f] [127.0.0.1]    (0.4ms)  SELECT COUNT(*) FROM `stats_push_campaign_clicks` WHERE `stats_push_campaign_clicks`.`campaign_id` = 25
-[854202a2-abb4-4504-9640-ca9c99859f6f] [127.0.0.1]    (0.4ms)  SELECT COUNT(*) FROM `stats_push_campaign_views` WHERE `stats_push_campaign_views`.`campaign_id` = 25
-[854202a2-abb4-4504-9640-ca9c99859f6f] [127.0.0.1]    (0.3ms)  SELECT COUNT(*) FROM `stats_push_campaign_clicks` WHERE `stats_push_campaign_clicks`.`campaign_id` = 26
-[854202a2-abb4-4504-9640-ca9c99859f6f] [127.0.0.1]    (0.4ms)  SELECT COUNT(*) FROM `stats_push_campaign_views` WHERE `stats_push_campaign_views`.`campaign_id` = 26
-[854202a2-abb4-4504-9640-ca9c99859f6f] [127.0.0.1]    (0.4ms)  SELECT COUNT(*) FROM `stats_push_campaign_clicks` WHERE `stats_push_campaign_clicks`.`campaign_id` = 27
-[854202a2-abb4-4504-9640-ca9c99859f6f] [127.0.0.1]    (0.4ms)  SELECT COUNT(*) FROM `stats_push_campaign_views` WHERE `stats_push_campaign_views`.`campaign_id` = 27
-[854202a2-abb4-4504-9640-ca9c99859f6f] [127.0.0.1]    (0.4ms)  SELECT COUNT(*) FROM `stats_push_campaign_clicks` WHERE `stats_push_campaign_clicks`.`campaign_id` = 28
-[854202a2-abb4-4504-9640-ca9c99859f6f] [127.0.0.1]    (0.3ms)  SELECT COUNT(*) FROM `stats_push_campaign_views` WHERE `stats_push_campaign_views`.`campaign_id` = 28
-[854202a2-abb4-4504-9640-ca9c99859f6f] [127.0.0.1]    (0.3ms)  SELECT COUNT(*) FROM `stats_push_campaign_clicks` WHERE `stats_push_campaign_clicks`.`campaign_id` = 29
-[854202a2-abb4-4504-9640-ca9c99859f6f] [127.0.0.1]    (0.3ms)  SELECT COUNT(*) FROM `stats_push_campaign_views` WHERE `stats_push_campaign_views`.`campaign_id` = 29
-[854202a2-abb4-4504-9640-ca9c99859f6f] [127.0.0.1]    (0.3ms)  SELECT COUNT(*) FROM `stats_push_campaign_clicks` WHERE `stats_push_campaign_clicks`.`campaign_id` = 30
-[854202a2-abb4-4504-9640-ca9c99859f6f] [127.0.0.1]    (0.3ms)  SELECT COUNT(*) FROM `stats_push_campaign_views` WHERE `stats_push_campaign_views`.`campaign_id` = 30
-[854202a2-abb4-4504-9640-ca9c99859f6f] [127.0.0.1]    (0.3ms)  SELECT COUNT(*) FROM `stats_push_campaign_clicks` WHERE `stats_push_campaign_clicks`.`campaign_id` = 31
-[854202a2-abb4-4504-9640-ca9c99859f6f] [127.0.0.1]    (0.3ms)  SELECT COUNT(*) FROM `stats_push_campaign_views` WHERE `stats_push_campaign_views`.`campaign_id` = 31
-[854202a2-abb4-4504-9640-ca9c99859f6f] [127.0.0.1]    (0.3ms)  SELECT COUNT(*) FROM `stats_push_campaign_clicks` WHERE `stats_push_campaign_clicks`.`campaign_id` = 32
-[854202a2-abb4-4504-9640-ca9c99859f6f] [127.0.0.1]    (0.3ms)  SELECT COUNT(*) FROM `stats_push_campaign_views` WHERE `stats_push_campaign_views`.`campaign_id` = 32
-[854202a2-abb4-4504-9640-ca9c99859f6f] [127.0.0.1]    (0.3ms)  SELECT COUNT(*) FROM `stats_push_campaign_clicks` WHERE `stats_push_campaign_clicks`.`campaign_id` = 33
-[854202a2-abb4-4504-9640-ca9c99859f6f] [127.0.0.1]    (0.4ms)  SELECT COUNT(*) FROM `stats_push_campaign_views` WHERE `stats_push_campaign_views`.`campaign_id` = 33
-[854202a2-abb4-4504-9640-ca9c99859f6f] [127.0.0.1]    (0.3ms)  SELECT COUNT(*) FROM `stats_push_campaign_clicks` WHERE `stats_push_campaign_clicks`.`campaign_id` = 34
-[854202a2-abb4-4504-9640-ca9c99859f6f] [127.0.0.1]    (0.3ms)  SELECT COUNT(*) FROM `stats_push_campaign_views` WHERE `stats_push_campaign_views`.`campaign_id` = 34
-[854202a2-abb4-4504-9640-ca9c99859f6f] [127.0.0.1]    (0.3ms)  SELECT COUNT(*) FROM `stats_push_campaign_clicks` WHERE `stats_push_campaign_clicks`.`campaign_id` = 35
-[854202a2-abb4-4504-9640-ca9c99859f6f] [127.0.0.1]    (0.3ms)  SELECT COUNT(*) FROM `stats_push_campaign_views` WHERE `stats_push_campaign_views`.`campaign_id` = 35
-[854202a2-abb4-4504-9640-ca9c99859f6f] [127.0.0.1]    (0.3ms)  SELECT COUNT(*) FROM `stats_push_campaign_clicks` WHERE `stats_push_campaign_clicks`.`campaign_id` = 36
-[854202a2-abb4-4504-9640-ca9c99859f6f] [127.0.0.1]    (0.4ms)  SELECT COUNT(*) FROM `stats_push_campaign_views` WHERE `stats_push_campaign_views`.`campaign_id` = 36
-[854202a2-abb4-4504-9640-ca9c99859f6f] [127.0.0.1]    (0.3ms)  SELECT COUNT(*) FROM `stats_push_campaign_clicks` WHERE `stats_push_campaign_clicks`.`campaign_id` = 37
-[854202a2-abb4-4504-9640-ca9c99859f6f] [127.0.0.1]    (0.5ms)  SELECT COUNT(*) FROM `stats_push_campaign_views` WHERE `stats_push_campaign_views`.`campaign_id` = 37
-[854202a2-abb4-4504-9640-ca9c99859f6f] [127.0.0.1]    (0.5ms)  SELECT COUNT(*) FROM `stats_push_campaign_clicks` WHERE `stats_push_campaign_clicks`.`campaign_id` = 38
-[854202a2-abb4-4504-9640-ca9c99859f6f] [127.0.0.1]    (0.4ms)  SELECT COUNT(*) FROM `stats_push_campaign_views` WHERE `stats_push_campaign_views`.`campaign_id` = 38
-[854202a2-abb4-4504-9640-ca9c99859f6f] [127.0.0.1]    (0.5ms)  SELECT COUNT(*) FROM `stats_push_campaign_clicks` WHERE `stats_push_campaign_clicks`.`campaign_id` = 39
-[854202a2-abb4-4504-9640-ca9c99859f6f] [127.0.0.1]    (0.6ms)  SELECT COUNT(*) FROM `stats_push_campaign_views` WHERE `stats_push_campaign_views`.`campaign_id` = 39
-[854202a2-abb4-4504-9640-ca9c99859f6f] [127.0.0.1]    (0.4ms)  SELECT COUNT(*) FROM `stats_push_campaign_clicks` WHERE `stats_push_campaign_clicks`.`campaign_id` = 40
-[854202a2-abb4-4504-9640-ca9c99859f6f] [127.0.0.1]    (0.3ms)  SELECT COUNT(*) FROM `stats_push_campaign_views` WHERE `stats_push_campaign_views`.`campaign_id` = 40
-[854202a2-abb4-4504-9640-ca9c99859f6f] [127.0.0.1]    (0.3ms)  SELECT COUNT(*) FROM `stats_push_campaign_clicks` WHERE `stats_push_campaign_clicks`.`campaign_id` = 41
-[854202a2-abb4-4504-9640-ca9c99859f6f] [127.0.0.1]    (0.3ms)  SELECT COUNT(*) FROM `stats_push_campaign_views` WHERE `stats_push_campaign_views`.`campaign_id` = 41
-[854202a2-abb4-4504-9640-ca9c99859f6f] [127.0.0.1]    (0.4ms)  SELECT COUNT(*) FROM `stats_push_campaign_clicks` WHERE `stats_push_campaign_clicks`.`campaign_id` = 42
-[854202a2-abb4-4504-9640-ca9c99859f6f] [127.0.0.1]    (0.3ms)  SELECT COUNT(*) FROM `stats_push_campaign_views` WHERE `stats_push_campaign_views`.`campaign_id` = 42
-[854202a2-abb4-4504-9640-ca9c99859f6f] [127.0.0.1]    (0.3ms)  SELECT COUNT(*) FROM `stats_push_campaign_clicks` WHERE `stats_push_campaign_clicks`.`campaign_id` = 43
-[854202a2-abb4-4504-9640-ca9c99859f6f] [127.0.0.1]    (0.5ms)  SELECT COUNT(*) FROM `stats_push_campaign_views` WHERE `stats_push_campaign_views`.`campaign_id` = 43
-[854202a2-abb4-4504-9640-ca9c99859f6f] [127.0.0.1]    (0.4ms)  SELECT COUNT(*) FROM `stats_push_campaign_clicks` WHERE `stats_push_campaign_clicks`.`campaign_id` = 44
-[854202a2-abb4-4504-9640-ca9c99859f6f] [127.0.0.1]    (0.3ms)  SELECT COUNT(*) FROM `stats_push_campaign_views` WHERE `stats_push_campaign_views`.`campaign_id` = 44
-[854202a2-abb4-4504-9640-ca9c99859f6f] [127.0.0.1]    (0.3ms)  SELECT COUNT(*) FROM `stats_push_campaign_clicks` WHERE `stats_push_campaign_clicks`.`campaign_id` = 45
-[854202a2-abb4-4504-9640-ca9c99859f6f] [127.0.0.1]    (0.3ms)  SELECT COUNT(*) FROM `stats_push_campaign_views` WHERE `stats_push_campaign_views`.`campaign_id` = 45
-[854202a2-abb4-4504-9640-ca9c99859f6f] [127.0.0.1]    (0.3ms)  SELECT COUNT(*) FROM `stats_push_campaign_clicks` WHERE `stats_push_campaign_clicks`.`campaign_id` = 46
-[854202a2-abb4-4504-9640-ca9c99859f6f] [127.0.0.1]    (0.3ms)  SELECT COUNT(*) FROM `stats_push_campaign_views` WHERE `stats_push_campaign_views`.`campaign_id` = 46
-[854202a2-abb4-4504-9640-ca9c99859f6f] [127.0.0.1]    (0.3ms)  SELECT COUNT(*) FROM `stats_push_campaign_clicks` WHERE `stats_push_campaign_clicks`.`campaign_id` = 47
-[854202a2-abb4-4504-9640-ca9c99859f6f] [127.0.0.1]    (0.3ms)  SELECT COUNT(*) FROM `stats_push_campaign_views` WHERE `stats_push_campaign_views`.`campaign_id` = 47
-[854202a2-abb4-4504-9640-ca9c99859f6f] [127.0.0.1]    (0.3ms)  SELECT COUNT(*) FROM `stats_push_campaign_clicks` WHERE `stats_push_campaign_clicks`.`campaign_id` = 48
-[854202a2-abb4-4504-9640-ca9c99859f6f] [127.0.0.1]    (0.4ms)  SELECT COUNT(*) FROM `stats_push_campaign_views` WHERE `stats_push_campaign_views`.`campaign_id` = 48
-[854202a2-abb4-4504-9640-ca9c99859f6f] [127.0.0.1]    (0.4ms)  SELECT COUNT(*) FROM `stats_push_campaign_clicks` WHERE `stats_push_campaign_clicks`.`campaign_id` = 49
-[854202a2-abb4-4504-9640-ca9c99859f6f] [127.0.0.1]    (0.4ms)  SELECT COUNT(*) FROM `stats_push_campaign_views` WHERE `stats_push_campaign_views`.`campaign_id` = 49
-[854202a2-abb4-4504-9640-ca9c99859f6f] [127.0.0.1]    (0.4ms)  SELECT COUNT(*) FROM `stats_push_campaign_clicks` WHERE `stats_push_campaign_clicks`.`campaign_id` = 50
-[854202a2-abb4-4504-9640-ca9c99859f6f] [127.0.0.1]    (0.3ms)  SELECT COUNT(*) FROM `stats_push_campaign_views` WHERE `stats_push_campaign_views`.`campaign_id` = 50
-[854202a2-abb4-4504-9640-ca9c99859f6f] [127.0.0.1]   CACHE (0.0ms)  SELECT COUNT(*) FROM `customers` WHERE `customers`.`domain_id` = 2 AND `customers`.`is_deleted` = 0  [["domain_id", 2], ["is_deleted", false]]
-[854202a2-abb4-4504-9640-ca9c99859f6f] [127.0.0.1]    (0.4ms)  SELECT COUNT(*) FROM `customers` WHERE `customers`.`domain_id` = 2 AND (`created_at` > '2017-08-24 00:00:00.000000')
-[854202a2-abb4-4504-9640-ca9c99859f6f] [127.0.0.1]    (0.6ms)  SELECT COUNT(*) AS count_all, DATE(`customers`.`created_at`) AS date_customers_created_at FROM `customers` WHERE `customers`.`domain_id` = 2 AND (`customers`.`created_at` > '2017-07-25 03:31:54.550061' ) GROUP BY DATE(`customers`.`created_at`)  ORDER BY `customers`.`created_at` ASC
-[854202a2-abb4-4504-9640-ca9c99859f6f] [127.0.0.1]    (0.6ms)  SELECT COUNT(*) FROM `customers` WHERE `customers`.`domain_id` = 2 AND (`created_at` > '2017-08-01 00:00:00.000000')
-[854202a2-abb4-4504-9640-ca9c99859f6f] [127.0.0.1]    (0.6ms)  SELECT COUNT(*) AS count_all, MONTH(`created_at`) AS month_created_at FROM `customers` WHERE `customers`.`domain_id` = 2 AND (`customers`.`created_at` > '2016-09-24 03:31:54.557080') GROUP BY MONTH(`created_at`)
+Started GET "/dashboard" for 127.0.0.1 at 2017-08-24 09:01:54 +0530
+  User Load (0.4ms)  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 1  ORDER BY `users`.`id` ASC LIMIT 1
+Processing by DomainsController#index as HTML
+  AccountUser Load (0.4ms)  SELECT  `account_users`.* FROM `account_users` WHERE `account_users`.`user_id` = 1 AND `account_users`.`account_id` = 2 LIMIT 1
+  Account Load (0.3ms)  SELECT  `accounts`.* FROM `accounts` WHERE `accounts`.`id` = 2 LIMIT 1
+  Domain Load (0.4ms)  SELECT  `domains`.* FROM `domains` WHERE `domains`.`account_id` = 2 AND `domains`.`id` = 2 LIMIT 1
+   (0.6ms)  SELECT COUNT(*) FROM `customers` WHERE `customers`.`domain_id` = 2 AND `customers`.`is_deleted` = 0
+Dalli::Server#connect localhost:11211
+localhost:11211 is back (downtime was 38.089 seconds)
+   (0.5ms)  SELECT COUNT(*) FROM `stats_domain_subscribe` WHERE `stats_domain_subscribe`.`domain_id` = 2 AND (`stats_domain_subscribe`.`created_at` > '2017-08-24 00:00:00.000000')
+   (0.4ms)  SELECT COUNT(*) FROM `stats_domain_subscribe` WHERE `stats_domain_subscribe`.`domain_id` = 2 AND (`stats_domain_subscribe`.`created_at` > '2017-08-23 00:00:00.000000' AND `stats_domain_subscribe`.`created_at` < '2017-08-24 00:00:00.000000')
+   (0.4ms)  SELECT COUNT(*) AS count_all, DATE(`stats_domain_subscribe`.`created_at`) AS date_stats_domain_subscribe_created_at FROM `stats_domain_subscribe` WHERE `stats_domain_subscribe`.`domain_id` = 2 AND (`stats_domain_subscribe`.`created_at` > '2017-07-25 03:31:54.431481' ) GROUP BY DATE(`stats_domain_subscribe`.`created_at`)  ORDER BY `stats_domain_subscribe`.`created_at` ASC
+   (0.4ms)  SELECT COUNT(*) FROM `stats_domain_unsubscribe` WHERE `stats_domain_unsubscribe`.`domain_id` = 2 AND (`stats_domain_unsubscribe`.`created_at` > '2017-08-24 00:00:00.000000')
+   (0.5ms)  SELECT COUNT(*) FROM `stats_domain_unsubscribe` WHERE `stats_domain_unsubscribe`.`domain_id` = 2 AND (`stats_domain_unsubscribe`.`created_at` > '2017-08-23 00:00:00.000000' AND `stats_domain_unsubscribe`.`created_at` < '2017-08-24 00:00:00.000000')
+   (0.5ms)  SELECT COUNT(*) AS count_all, DATE(`stats_domain_unsubscribe`.`created_at`) AS date_stats_domain_unsubscribe_created_at FROM `stats_domain_unsubscribe` WHERE `stats_domain_unsubscribe`.`domain_id` = 2 AND (`stats_domain_unsubscribe`.`created_at` > '2017-07-25 03:31:54.440731' ) GROUP BY DATE(`stats_domain_unsubscribe`.`created_at`)  ORDER BY `stats_domain_unsubscribe`.`created_at` ASC
+   (0.6ms)  SELECT COUNT(*) FROM `customers` WHERE `customers`.`domain_id` = 2 AND `customers`.`is_deleted` = 0 AND `customers`.`push_subscribed` = 1
+   (0.6ms)  SELECT COUNT(*) AS count_all, MONTH(`created_at`) AS month_created_at FROM `customers` WHERE `customers`.`domain_id` = 2 AND `customers`.`is_deleted` = 0 AND `customers`.`push_subscribed` = 1 AND (`customers`.`created_at` > '2016-09-24 03:31:54.446290') GROUP BY MONTH(`created_at`)
+   (0.4ms)  SELECT COUNT(*) FROM `customers` WHERE `customers`.`domain_id` = 2 AND `customers`.`is_deleted` = 0 AND `customers`.`push_subscribed` = 1 AND (`customers`.`created_at` > '2017-08-01 00:00:00.000000')
+  Campaign Load (0.6ms)  SELECT  `campaigns`.* FROM `campaigns` WHERE `campaigns`.`domain_id` = 2  ORDER BY `campaigns`.`id` DESC LIMIT 30
+   (0.4ms)  SELECT COUNT(*) FROM `stats_push_campaign_clicks` WHERE `stats_push_campaign_clicks`.`campaign_id` = 21
+   (0.4ms)  SELECT COUNT(*) FROM `stats_push_campaign_views` WHERE `stats_push_campaign_views`.`campaign_id` = 21
+   (0.4ms)  SELECT COUNT(*) FROM `stats_push_campaign_clicks` WHERE `stats_push_campaign_clicks`.`campaign_id` = 22
+   (0.4ms)  SELECT COUNT(*) FROM `stats_push_campaign_views` WHERE `stats_push_campaign_views`.`campaign_id` = 22
+   (0.4ms)  SELECT COUNT(*) FROM `stats_push_campaign_clicks` WHERE `stats_push_campaign_clicks`.`campaign_id` = 23
+   (0.4ms)  SELECT COUNT(*) FROM `stats_push_campaign_views` WHERE `stats_push_campaign_views`.`campaign_id` = 23
+   (0.4ms)  SELECT COUNT(*) FROM `stats_push_campaign_clicks` WHERE `stats_push_campaign_clicks`.`campaign_id` = 24
+   (0.5ms)  SELECT COUNT(*) FROM `stats_push_campaign_views` WHERE `stats_push_campaign_views`.`campaign_id` = 24
+   (0.4ms)  SELECT COUNT(*) FROM `stats_push_campaign_clicks` WHERE `stats_push_campaign_clicks`.`campaign_id` = 25
+   (0.4ms)  SELECT COUNT(*) FROM `stats_push_campaign_views` WHERE `stats_push_campaign_views`.`campaign_id` = 25
+   (0.3ms)  SELECT COUNT(*) FROM `stats_push_campaign_clicks` WHERE `stats_push_campaign_clicks`.`campaign_id` = 26
+   (0.4ms)  SELECT COUNT(*) FROM `stats_push_campaign_views` WHERE `stats_push_campaign_views`.`campaign_id` = 26
+   (0.4ms)  SELECT COUNT(*) FROM `stats_push_campaign_clicks` WHERE `stats_push_campaign_clicks`.`campaign_id` = 27
+   (0.4ms)  SELECT COUNT(*) FROM `stats_push_campaign_views` WHERE `stats_push_campaign_views`.`campaign_id` = 27
+   (0.4ms)  SELECT COUNT(*) FROM `stats_push_campaign_clicks` WHERE `stats_push_campaign_clicks`.`campaign_id` = 28
+   (0.3ms)  SELECT COUNT(*) FROM `stats_push_campaign_views` WHERE `stats_push_campaign_views`.`campaign_id` = 28
+   (0.3ms)  SELECT COUNT(*) FROM `stats_push_campaign_clicks` WHERE `stats_push_campaign_clicks`.`campaign_id` = 29
+   (0.3ms)  SELECT COUNT(*) FROM `stats_push_campaign_views` WHERE `stats_push_campaign_views`.`campaign_id` = 29
+   (0.3ms)  SELECT COUNT(*) FROM `stats_push_campaign_clicks` WHERE `stats_push_campaign_clicks`.`campaign_id` = 30
+   (0.3ms)  SELECT COUNT(*) FROM `stats_push_campaign_views` WHERE `stats_push_campaign_views`.`campaign_id` = 30
+   (0.3ms)  SELECT COUNT(*) FROM `stats_push_campaign_clicks` WHERE `stats_push_campaign_clicks`.`campaign_id` = 31
+   (0.3ms)  SELECT COUNT(*) FROM `stats_push_campaign_views` WHERE `stats_push_campaign_views`.`campaign_id` = 31
+   (0.3ms)  SELECT COUNT(*) FROM `stats_push_campaign_clicks` WHERE `stats_push_campaign_clicks`.`campaign_id` = 32
+   (0.3ms)  SELECT COUNT(*) FROM `stats_push_campaign_views` WHERE `stats_push_campaign_views`.`campaign_id` = 32
+   (0.3ms)  SELECT COUNT(*) FROM `stats_push_campaign_clicks` WHERE `stats_push_campaign_clicks`.`campaign_id` = 33
+   (0.4ms)  SELECT COUNT(*) FROM `stats_push_campaign_views` WHERE `stats_push_campaign_views`.`campaign_id` = 33
+   (0.3ms)  SELECT COUNT(*) FROM `stats_push_campaign_clicks` WHERE `stats_push_campaign_clicks`.`campaign_id` = 34
+   (0.3ms)  SELECT COUNT(*) FROM `stats_push_campaign_views` WHERE `stats_push_campaign_views`.`campaign_id` = 34
+   (0.3ms)  SELECT COUNT(*) FROM `stats_push_campaign_clicks` WHERE `stats_push_campaign_clicks`.`campaign_id` = 35
+   (0.3ms)  SELECT COUNT(*) FROM `stats_push_campaign_views` WHERE `stats_push_campaign_views`.`campaign_id` = 35
+   (0.3ms)  SELECT COUNT(*) FROM `stats_push_campaign_clicks` WHERE `stats_push_campaign_clicks`.`campaign_id` = 36
+   (0.4ms)  SELECT COUNT(*) FROM `stats_push_campaign_views` WHERE `stats_push_campaign_views`.`campaign_id` = 36
+   (0.3ms)  SELECT COUNT(*) FROM `stats_push_campaign_clicks` WHERE `stats_push_campaign_clicks`.`campaign_id` = 37
+   (0.5ms)  SELECT COUNT(*) FROM `stats_push_campaign_views` WHERE `stats_push_campaign_views`.`campaign_id` = 37
+   (0.5ms)  SELECT COUNT(*) FROM `stats_push_campaign_clicks` WHERE `stats_push_campaign_clicks`.`campaign_id` = 38
+   (0.4ms)  SELECT COUNT(*) FROM `stats_push_campaign_views` WHERE `stats_push_campaign_views`.`campaign_id` = 38
+   (0.5ms)  SELECT COUNT(*) FROM `stats_push_campaign_clicks` WHERE `stats_push_campaign_clicks`.`campaign_id` = 39
+   (0.6ms)  SELECT COUNT(*) FROM `stats_push_campaign_views` WHERE `stats_push_campaign_views`.`campaign_id` = 39
+   (0.4ms)  SELECT COUNT(*) FROM `stats_push_campaign_clicks` WHERE `stats_push_campaign_clicks`.`campaign_id` = 40
+   (0.3ms)  SELECT COUNT(*) FROM `stats_push_campaign_views` WHERE `stats_push_campaign_views`.`campaign_id` = 40
+   (0.3ms)  SELECT COUNT(*) FROM `stats_push_campaign_clicks` WHERE `stats_push_campaign_clicks`.`campaign_id` = 41
+   (0.3ms)  SELECT COUNT(*) FROM `stats_push_campaign_views` WHERE `stats_push_campaign_views`.`campaign_id` = 41
+   (0.4ms)  SELECT COUNT(*) FROM `stats_push_campaign_clicks` WHERE `stats_push_campaign_clicks`.`campaign_id` = 42
+   (0.3ms)  SELECT COUNT(*) FROM `stats_push_campaign_views` WHERE `stats_push_campaign_views`.`campaign_id` = 42
+   (0.3ms)  SELECT COUNT(*) FROM `stats_push_campaign_clicks` WHERE `stats_push_campaign_clicks`.`campaign_id` = 43
+   (0.5ms)  SELECT COUNT(*) FROM `stats_push_campaign_views` WHERE `stats_push_campaign_views`.`campaign_id` = 43
+   (0.4ms)  SELECT COUNT(*) FROM `stats_push_campaign_clicks` WHERE `stats_push_campaign_clicks`.`campaign_id` = 44
+   (0.3ms)  SELECT COUNT(*) FROM `stats_push_campaign_views` WHERE `stats_push_campaign_views`.`campaign_id` = 44
+   (0.3ms)  SELECT COUNT(*) FROM `stats_push_campaign_clicks` WHERE `stats_push_campaign_clicks`.`campaign_id` = 45
+   (0.3ms)  SELECT COUNT(*) FROM `stats_push_campaign_views` WHERE `stats_push_campaign_views`.`campaign_id` = 45
+   (0.3ms)  SELECT COUNT(*) FROM `stats_push_campaign_clicks` WHERE `stats_push_campaign_clicks`.`campaign_id` = 46
+   (0.3ms)  SELECT COUNT(*) FROM `stats_push_campaign_views` WHERE `stats_push_campaign_views`.`campaign_id` = 46
+   (0.3ms)  SELECT COUNT(*) FROM `stats_push_campaign_clicks` WHERE `stats_push_campaign_clicks`.`campaign_id` = 47
+   (0.3ms)  SELECT COUNT(*) FROM `stats_push_campaign_views` WHERE `stats_push_campaign_views`.`campaign_id` = 47
+   (0.3ms)  SELECT COUNT(*) FROM `stats_push_campaign_clicks` WHERE `stats_push_campaign_clicks`.`campaign_id` = 48
+   (0.4ms)  SELECT COUNT(*) FROM `stats_push_campaign_views` WHERE `stats_push_campaign_views`.`campaign_id` = 48
+   (0.4ms)  SELECT COUNT(*) FROM `stats_push_campaign_clicks` WHERE `stats_push_campaign_clicks`.`campaign_id` = 49
+   (0.4ms)  SELECT COUNT(*) FROM `stats_push_campaign_views` WHERE `stats_push_campaign_views`.`campaign_id` = 49
+   (0.4ms)  SELECT COUNT(*) FROM `stats_push_campaign_clicks` WHERE `stats_push_campaign_clicks`.`campaign_id` = 50
+   (0.3ms)  SELECT COUNT(*) FROM `stats_push_campaign_views` WHERE `stats_push_campaign_views`.`campaign_id` = 50
+  CACHE (0.0ms)  SELECT COUNT(*) FROM `customers` WHERE `customers`.`domain_id` = 2 AND `customers`.`is_deleted` = 0  [["domain_id", 2], ["is_deleted", false]]
+   (0.4ms)  SELECT COUNT(*) FROM `customers` WHERE `customers`.`domain_id` = 2 AND (`created_at` > '2017-08-24 00:00:00.000000')
+   (0.6ms)  SELECT COUNT(*) AS count_all, DATE(`customers`.`created_at`) AS date_customers_created_at FROM `customers` WHERE `customers`.`domain_id` = 2 AND (`customers`.`created_at` > '2017-07-25 03:31:54.550061' ) GROUP BY DATE(`customers`.`created_at`)  ORDER BY `customers`.`created_at` ASC
+   (0.6ms)  SELECT COUNT(*) FROM `customers` WHERE `customers`.`domain_id` = 2 AND (`created_at` > '2017-08-01 00:00:00.000000')
+   (0.6ms)  SELECT COUNT(*) AS count_all, MONTH(`created_at`) AS month_created_at FROM `customers` WHERE `customers`.`domain_id` = 2 AND (`customers`.`created_at` > '2016-09-24 03:31:54.557080') GROUP BY MONTH(`created_at`)
