@@ -1,55 +1,128 @@
 <!DOCTYPE html>
   <head>
+    <link rel="icon" href="./favicon.ico"/>
     <title> SQL Log Analyzer </title>
     <script src="./js/simpleSqlParser.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
     <script src="./js/controllers.js"></script>
-    <link rel="stylesheet" href="./styles/style.css">
-    <link rel="icon" href="./favicon.ico"/>
+
+    <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
   </head>
 
-  <body ng-app="queryAnalysisApp">
-    <header>
-      SQL Log {{'Analyz' + 'er'}}
-      <div class="pull-right">
-        <a href="https://github.com/sony-mathew/sql-log-analyzer"> Help </a>
-        <a href="https://github.com/sony-mathew/sql-log-analyzer"> Github </a>
-        <a href="https://github.com/sony-mathew/sql-log-analyzer/issues"> Report Issues </a>
-      </div>
-    </header>
-    <nav>
-    </nav>
-
-    <section id="log-input" ng-controller="LogInput as logi" ng-hide="logi.hide">
-      <p>
-        Paste the log here <br/>
-        <textarea name="log_input" class="log_input" ng-model="logi.railsLog"> </textarea> <br/>
-        <input type="submit" name="submit" value="submit" ng-click="logi.getLog()">
-      </p>
-    </section>
-
-
-    <section id="log-analysis" ng-controller="LogAnalysis as loga">
-      <p ng-hide="!loga.tables()">
-        <span>
-          Select table : 
-          <select id="mysql-table" name="mysql_table" ng-change="loga.selectTable()" ng-model="loga.mysqlTable">
-            <option ng-repeat="table in loga.tables()">{{ table }}</option>
-          </select>
-        </span>
-        <span ng-hide="!loga.queryTypes()">
-          Select query type :
-          <select id="query-type" name="query_type" ng-change="loga.selectQueryType()" ng-model="loga.tableQueryType">
-            <option ng-repeat="type in loga.queryTypes()">{{ type }}</option>
-          </select>
-        </span>
-
-        <div class="listing">
-          <p ng-repeat="query in loga.listQ() track by $index"> 
-            {{ $index + 1}} . {{ query }}
-          </p>
+  <body ng-app="queryAnalysisApp" class="font-sans">
+    
+    <nav class="flex bg-white border-b border-gray-200 fixed top-0 inset-x-0 z-100 h-16 items-center">
+      <div class="w-full max-w-screen-xl relative mx-auto px-6">
+        <div class="flex items-center -mx-6">
+          <div class="pl-6 pr-6">
+            <a class="block lg:mr-4 text-gray-700 font-medium text-2xl" href="/"> SQL Log {{'Analyz' + 'er'}} </a>
+          </div>
+          <div class="flex flex-grow min-w-0 lg:w-3/4 xl:w-4/5 flex-row-reverse">
+            <div
+              class="hidden lg:flex lg:items-center lg:justify-between xl:w-1/4 px-6"
+            >
+              <div class="flex justify-start items-center text-gray-500">
+                <a
+                  href="https://sony-mathew.github.io"
+                  target="_blank"
+                  class="block flex items-center hover:text-gray-700 mr-5"
+                >
+                  Author
+                </a>
+                <a
+                  href="https://github.com/sony-mathew/sql-log-analyzer"
+                  target="_blank"
+                  class="block flex items-center hover:text-gray-700 mr-5"
+                >
+                  Help
+                </a>
+                <a
+                  href="https://github.com/sony-mathew/sql-log-analyzer"
+                  target="_blank"
+                  class="block flex items-center hover:text-gray-700 mr-5"
+                >
+                  Github
+                </a>
+                <a
+                  href="https://github.com/sony-mathew/sql-log-analyzer/issues"
+                  target="_blank"
+                  class="block flex items-center hover:text-gray-700 mr-5"
+                >
+                  Issues
+                </a>
+              </div>
+            </div>
+          </div>
         </div>
-      </p>
-    </section>
+      </div>
+    </nav>
+    
+    <div class="flex bg-white mt-20 w-full max-w-screen-xl relative mx-auto px-6">
+      <section id="log-input" ng-controller="LogInput as logi" ng-hide="logi.hide" class="w-full max-w-screen-xl">
+        <div class="flex flex-col gap-10">
+          <div class="text-gray-700 text-xl">
+            <span class="text-purple-400 text-opacity-50">Step 1.</span> Paste the SQL log in the following text box
+          </div>
+          <div class="">
+            <textarea class="rounded border border-gray-400 w-full h-48" name="log_input" class="log_input" ng-model="logi.railsLog"></textarea>
+          </div>
+          <div>
+            <input type="submit" name="submit" value="submit" ng-click="logi.getLog()" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+          </div>
+        </div>
+      </section>
+
+      <section id="log-analysis" ng-controller="LogAnalysis as loga" class="w-full max-w-screen-xl">
+
+        <div ng-hide="!loga.tables()" class="flex flex-col gap-10">
+          
+          <div class="flex flex-row gap-4 text-gray-700 text-xl">
+            <div>
+              <span class="text-purple-400 text-opacity-50">Step 2.</span>
+              <span>Select SQL Table</span>
+            </div>
+            <select class="rounded-md border border-gray-400 text-l" id="mysql-table" name="mysql_table" ng-change="loga.selectTable()" ng-model="loga.mysqlTable">
+              <option ng-repeat="table in loga.tables()">{{ table }}</option>
+            </select>
+          </div>
+          
+          <div ng-hide="!loga.queryTypes()" class="flex flex-row gap-4 text-gray-700 text-xl">
+            <div>
+              <span class="text-purple-400 text-opacity-50">Step 3.</span>
+              <span>Select Query Type</span>
+            </div>
+            <select class="rounded-md border border-gray-400 text-l" id="query-type" name="query_type" ng-change="loga.selectQueryType()" ng-model="loga.tableQueryType">
+              <option ng-repeat="type in loga.queryTypes()">{{ type }}</option>
+            </select>
+          </div>
+
+          <div class="listing">
+
+            <table class="w-full text-left table-collapse">  
+              <thead>
+                <tr>
+                  <th class="z-20 sticky top-0 text-sm font-semibold text-gray-700 p-0">
+                    <div class="p-2 border-b border-gray-300">#</div>
+                  </th>
+                  <th class="z-20 sticky top-0 text-sm font-semibold text-gray-700 p-0 hidden sm:table-cell">
+                    <div class="p-2 border-b border-gray-300">Query</div>
+                  </th>
+                </tr>
+              </thead>
+              
+              <tr ng-repeat="query in loga.listQ() track by $index">
+                <td class="font-mono text-sm text-blue-700 hidden sm:table-cell whitespace-normal p-2">
+                  {{ $index + 1}}
+                </td>
+                <td class="font-mono text-sm text-blue-700 hidden sm:table-cell whitespace-normal p-2">
+                  {{ query }}
+                </td>
+              </tr>
+            </table>
+          </div>
+
+        </div>
+      </section>
+    </div>
   </body>
 </html>
